@@ -1,0 +1,37 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long           ll;
+int a[66][66];
+void transpose(ll limit) {
+  for (int i = 0; i <= limit; i++)
+    for (int j = i; j <= limit; j++)
+      swap(a[i][j], a[j][i]);
+}
+void test_case() {
+  int n;
+  cin >> n;
+  for (int i = 0; i < n; i++)
+    for (int j = 0; j < n; j++)
+      cin >> a[i][j];
+  int ans = 0;
+  for (int i = n - 1; i > 0; i--) {
+    if ((a[i][i - 1] ) != (a[i][i] - 1))
+    {
+      transpose(i);
+      ans++;
+    }
+  }
+  cout << ans << "\n";
+}
+
+int main()
+{
+  cin.sync_with_stdio(0);
+  cin.tie(0);
+  cout.tie(0);
+  int t;
+  cin >> t;
+  while (t--)
+    test_case();
+  return 0;
+}
